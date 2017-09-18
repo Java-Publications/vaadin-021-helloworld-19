@@ -59,7 +59,15 @@
     </dependency>
 
 
+    <!--Vaadin ProTools -->
+
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-charts</artifactId>
+    </dependency>
+
     <!--Vaadin AddOn-->
+
     <dependency>
       <groupId>org.vaadin.addon</groupId>
       <artifactId>confirmdialog</artifactId>
@@ -99,6 +107,11 @@
   </dependencies>
   <build>
     <plugins>
+
+
+
+
+
       <!--TDD-->
 
       <plugin>

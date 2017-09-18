@@ -1,6 +1,7 @@
 package org.rapidpm.vaadin.trainer.modules.login;
 
 import static com.vaadin.ui.Notification.show;
+import static org.rapidpm.ddi.DI.activateDI;
 import static org.rapidpm.vaadin.ComponentIDGenerator.buttonID;
 import static org.rapidpm.vaadin.ComponentIDGenerator.passwordID;
 import static org.rapidpm.vaadin.ComponentIDGenerator.textfieldID;
@@ -18,7 +19,7 @@ import org.rapidpm.vaadin.trainer.api.security.user.UserService;
 import org.rapidpm.vaadin.trainer.modules.mainview.MainView;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.Composite;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
@@ -30,7 +31,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  *
  */
-public class LoginComponent extends CustomComponent {
+public class LoginComponent extends Composite {
 
   public static final String BUTTON_CAPTION_OK = "generic.ok";
   public static final String BUTTON_CAPTION_CANCEL = "generic.cancel";
@@ -45,8 +46,6 @@ public class LoginComponent extends CustomComponent {
   public static final String ID_PASSWORDFIELD_PASSWORD = passwordID().apply(LoginComponent.class , PASSWORDFIELD_CAPTION_PASSWORD);
   public static final String ID_PANEL_MAIN = passwordID().apply(LoginComponent.class , PANEL_CAPTION_MAIN);
 
-
-  private Supplier<MainView> mainViewSupplier = () -> DI.activateDI(MainView.class);
 
   @Inject private LoginService loginService;
   @Inject private UserService userService;
@@ -87,7 +86,7 @@ public class LoginComponent extends CustomComponent {
       final boolean check = loginService.check(loginValue , passwordValue);
 
       final UI currentUI = UI.getCurrent();
-      currentUI.setContent((check) ? mainViewSupplier.get() : this);
+      currentUI.setContent((check) ? activateDI(MainView.class) : this);
 
       final VaadinSession vaadinSession = currentUI.getSession();
       vaadinSession.setAttribute(SESSION_ATTRIBUTE_USER , (check) ? userService.loadUser(loginValue) : null);

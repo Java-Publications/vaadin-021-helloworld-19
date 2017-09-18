@@ -42,19 +42,21 @@ public class PropertyServiceInMemory implements PropertyService {
     storage.put("login.language.de", "German");
     storage.put("login.language.en", "English");
 
-    storage.put("app.logo", "/images/rapidpm.PNG"); // i18n
-    storage.put("app.version", "Jumpstart Version 0.x.y"); // i18n
+    storage.put("menu.point.dashboard", "Dashboard");
+    storage.put("menu.point.calculate", "Calc");
+    storage.put("menu.point.write", "Write");
+    storage.put("menu.point.report", "Report");
+    storage.put("menu.point.exit", "Logout");
+    storage.put("menu.point.exit.message", "You want to go?");
+
+    storage.put("calc.component.btn.next", "Next");
+    storage.put("calc.component.btn.ok", "Ok");
+    storage.put("calc.component.chart.result.title", "Results");
+    storage.put("calc.component.chart.result.good", ":-)");
+    storage.put("calc.component.chart.result.bad", ":-(");
+    storage.put("calc.component.chart.result.yAxis", "Amount");
 
 
-    storage.put("menue.default.help", "Help"); // i18n
-    storage.put("menue.default.help.contact", "Contact"); // i18n
-    storage.put("menue.default.help.support", "Support"); // i18n
-    storage.put("menue.default.help.impressum", "Impressum"); // i18n
-    storage.put("menue.default.help.disclaimer", "Disclaimer"); // i18n
 
-    storage.put("menue.default.main", "Home"); // i18n
-    storage.put("menue.default.main.logout", "Logout"); // i18n7
-
-    storage.put("menue.default.chat", "Chat"); // i18n
-  }
+    }
 }

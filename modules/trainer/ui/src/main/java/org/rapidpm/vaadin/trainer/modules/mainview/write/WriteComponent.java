@@ -1,16 +1,19 @@
 package org.rapidpm.vaadin.trainer.modules.mainview.write;
 
-import org.rapidpm.vaadin.trainer.modules.AbstractBaseCustomComponent;
+import javax.annotation.PostConstruct;
+
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Composite;
 import com.vaadin.ui.Label;
 
 /**
  *
  */
-public class WriteComponent extends AbstractBaseCustomComponent {
+public class WriteComponent extends Composite {
 
-  @Override
-  protected Component createComponent() {
-    return new Label("WriteComponent");
+  @PostConstruct
+  private void postConstruct(){
+    setCompositionRoot(new Label("WriteComponent"));
   }
+
 }

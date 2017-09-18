@@ -1,17 +1,20 @@
 package org.rapidpm.vaadin.trainer.modules.mainview.report;
 
-import org.rapidpm.vaadin.trainer.modules.AbstractBaseCustomComponent;
+import javax.annotation.PostConstruct;
+
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Composite;
 import com.vaadin.ui.Label;
 
 /**
  *
  */
-public class ReportComponent extends AbstractBaseCustomComponent {
+public class ReportComponent extends Composite {
 
-  @Override
-  protected Component createComponent() {
-    return new Label("Report");
+  @PostConstruct
+  private void postConstruct(){
+    setCompositionRoot(new Label("Report"));
   }
+
 }
 

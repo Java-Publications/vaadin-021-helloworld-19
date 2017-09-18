@@ -2,8 +2,10 @@ package org.rapidpm.vaadin;
 
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import com.vaadin.ui.Component;
+import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HasComponents;
 
 /**
@@ -26,5 +28,12 @@ public interface UIFunctions {
     };
   }
 
+  public static Function<? extends Component, ? extends CustomComponent> wrap(){
+    return (input) -> {
+      final CustomComponent customComponent = new CustomComponent(input);
+      customComponent.setSizeFull();
+      return customComponent;
+    };
+  }
 
 }

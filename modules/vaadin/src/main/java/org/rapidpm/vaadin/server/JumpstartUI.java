@@ -19,11 +19,42 @@
 
 package org.rapidpm.vaadin.server;
 
+import javax.inject.Inject;
+
+import org.rapidpm.vaadin.server.api.SecurityService;
+import org.rapidpm.vaadin.server.api.SessionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.vaadin.annotations.PreserveOnRefresh;
+import com.vaadin.annotations.Widgetset;
+import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 
+@PreserveOnRefresh
+@Widgetset("org.rapidpm.vaadin.server.VaadinJumpstartWidgetset")
+public class JumpstartUI extends UI {
 
-public abstract class JumpstartUI extends UI {
+  private static final Logger LOGGER = LoggerFactory.getLogger(JumpstartUI.class);
 
-  //maybe own internal stuff
+
+  @Inject private SessionService userService;
+  @Inject private SecurityService securityService;
+  @Inject private JumpstartUIComponentFactory jumpstartUIComponentFactory;
+
+  @Override
+  protected void init(VaadinRequest vaadinRequest) {
+    LOGGER.debug("init - request = " + vaadinRequest);
+    if (! (isUserPresent() && isRemembered()))
+      setContent(jumpstartUIComponentFactory.createComponentToSetAsContent(vaadinRequest));
+    setSizeFull();
+  }
+
+  private boolean isRemembered() {
+    return securityService.isRemembered();
+  }
+
+  private boolean isUserPresent() {
+    return userService.isUserPresent();
+  }
 
 }

@@ -1,16 +1,18 @@
 package org.rapidpm.vaadin.trainer.modules.mainview.dashboard;
 
-import org.rapidpm.vaadin.trainer.modules.AbstractBaseCustomComponent;
+import javax.annotation.PostConstruct;
+
 import com.vaadin.ui.Component;
+import com.vaadin.ui.Composite;
 import com.vaadin.ui.Label;
 
 /**
  *
  */
-public class DashboardComponent extends AbstractBaseCustomComponent {
+public class DashboardComponent extends Composite {
 
-  @Override
-  protected Component createComponent() {
-    return new Label("Dashboard");
+  @PostConstruct
+  private void postConstruct() {
+    setCompositionRoot(new Label("DashBoard"));
   }
 }

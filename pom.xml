@@ -17,8 +17,8 @@
   </modules>
 
   <properties>
-    <maven.compiler.target>1.9</maven.compiler.target>
-    <maven.compiler.source>1.9</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <vaadin.version>8.1.0</vaadin.version>
@@ -121,6 +121,13 @@
         <artifactId>vaadin-testbench</artifactId>
         <version>5.1.0.alpha1</version>
         <scope>test</scope>
+      </dependency>
+
+      <!--Vaadin ProTools-->
+      <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-charts</artifactId>
+        <version>4.0.0</version>
       </dependency>
 
       <!--Vaadin AddOns-->
